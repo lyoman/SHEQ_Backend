@@ -91,10 +91,10 @@ class OrganogramListAPIView(ListAPIView):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        queryset = Organogram.objects.all()
+        queryset = Organogram.objects.filter(active=True)
         id = self.request.query_params.get('id', None)
         if id is not None:
-            queryset = queryset.filter(user=id)
+            queryset = queryset.filter(id=id)
             print("hey you", queryset)
         return queryset
 
@@ -141,10 +141,10 @@ class ProcessFlowChartListAPIView(ListAPIView):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        queryset = ProcessFlowChart.objects.all()
+        queryset = ProcessFlowChart.objects.filter(active=True)
         id = self.request.query_params.get('id', None)
         if id is not None:
-            queryset = queryset.filter(user=id)
+            queryset = queryset.filter(id=id)
             print("hey you", queryset)
         return queryset
 
@@ -190,10 +190,10 @@ class NeedsAndExpetationsListAPIView(ListAPIView):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        queryset = NeedsAndExpetations.objects.all()
+        queryset = NeedsAndExpetations.objects.filter(active=True)
         id = self.request.query_params.get('id', None)
         if id is not None:
-            queryset = queryset.filter(user=id)
+            queryset = queryset.filter(id=id)
             print("hey you", queryset)
         return queryset
 
@@ -240,9 +240,9 @@ class ComplaintsRegisterListAPIView(ListAPIView):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        queryset = ComplaintsRegister.objects.all()
+        queryset = ComplaintsRegister.objects.filter(active=True)
         id = self.request.query_params.get('id', None)
         if id is not None:
-            queryset = queryset.filter(user=id)
+            queryset = queryset.filter(id=id)
             print("hey you", queryset)
         return queryset

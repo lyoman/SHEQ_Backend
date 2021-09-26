@@ -53,6 +53,7 @@ ADMIN_SITE_HEADER = "SHEQ System"
 INSTALLED_APPS = [
     'accounts',
     'ims_04',
+    'approvals',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',

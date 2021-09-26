@@ -36,8 +36,7 @@ organogram_detail_url = HyperlinkedIdentityField(
 class OrganogramDetailSerializer(ModelSerializer):
     url = organogram_detail_url
     user = UserDetailSerializer(read_only=True)
-    approvedby = UserDetailSerializer(read_only=True)
-    # store_logo = SerializerMethodField()
+
     class Meta:
         model = Organogram
         fields = [
@@ -47,6 +46,7 @@ class OrganogramDetailSerializer(ModelSerializer):
             'name',
             'description',
             'organogram_file',
+            'active',
             'updated',
             'timestamp'
         ]
@@ -67,6 +67,7 @@ class OrganogramListSerializer(ModelSerializer):
             'delete_url',
             'name',
             'description',
+            'active',
             'organogram_file',
             'updated',
             'timestamp'
@@ -106,6 +107,7 @@ class ProcessFlowChartDetailSerializer(ModelSerializer):
             'name',
             'description',
             'process_chart_file',
+            'active',
             'updated',
             'timestamp'
         ]
@@ -127,6 +129,7 @@ class ProcessFlowChartListSerializer(ModelSerializer):
             'name',
             'description',
             'process_chart_file',
+            'active',
             'updated',
             'timestamp'
         ]
@@ -164,6 +167,7 @@ class NeedsAndExpetationsDetailSerializer(ModelSerializer):
             'name',
             'description',
             'needs_expetations_file',
+            'active',
             'updated',
             'timestamp'
         ]
@@ -185,6 +189,7 @@ class NeedsAndExpetationsListSerializer(ModelSerializer):
             'name',
             'description',
             'needs_expetations_file',
+            'active',
             'updated',
             'timestamp'
         ]
@@ -221,6 +226,7 @@ class ComplaintsRegisterDetailSerializer(ModelSerializer):
             'name',
             'description',
             'complaints_register_file',
+            'active',
             'updated',
             'timestamp'
         ]
@@ -242,6 +248,7 @@ class ComplaintsRegisterListSerializer(ModelSerializer):
             'name',
             'description',
             'complaints_register_file',
+            'active',
             'updated',
             'timestamp'
         ]
