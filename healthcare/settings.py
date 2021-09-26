@@ -170,7 +170,7 @@ MEDIA_URL  = '/media/'
 AUTH_USER_MODEL = 'accounts.User'
 
 LOGIN_REDIRECT_URL ='/dash/'
-LOGOUT_REDIRECT_URL='/login/'
+LOGOUT_REDIRECT_URL='/admin/'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
