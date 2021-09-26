@@ -26,11 +26,12 @@ admin.site.index_title = 'SHEQ Site Administration'
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('/', admin.site.urls),
-    path('', include('accounts.urls')),
+    # path('', include('accounts.urls')),
 
     #apis
     path('api/auth/token/', obtain_jwt_token),
     path('api/users/', include(("accounts.api.urls",'accounts-api'), namespace='accounts-api')),
+    path('api/ims_04/', include(("ims_04.api.urls",'ims_04-api'), namespace='ims_04-api')),
 ]
 
 
