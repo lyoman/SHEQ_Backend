@@ -32,6 +32,12 @@ urlpatterns = [
     path('api/auth/token/', obtain_jwt_token),
     path('api/users/', include(("accounts.api.urls",'accounts-api'), namespace='accounts-api')),
     path('api/ims_04/', include(("ims_04.api.urls",'ims_04-api'), namespace='ims_04-api')),
+    path('api/ims_05/', include(("ims_05.api.urls",'ims_05-api'), namespace='ims_05-api')),
+    path('api/ims_06/', include(("ims_06.api.urls",'ims_06-api'), namespace='ims_06-api')),
+    path('api/ims_07/', include(("ims_07.api.urls",'ims_07-api'), namespace='ims_07-api')),
+    # path('api/ims_08/', include(("ims_08.api.urls",'ims_08-api'), namespace='ims_08-api')),
+    # path('api/ims_09/', include(("ims_09.api.urls",'ims_09-api'), namespace='ims_09-api')),
+    # path('api/ims_10/', include(("ims_10.api.urls",'ims_10-api'), namespace='ims_10-api')),
 ]
 
 
