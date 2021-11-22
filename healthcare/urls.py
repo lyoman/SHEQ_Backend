@@ -37,7 +37,7 @@ urlpatterns = [
     path('api/ims_07/', include(("ims_07.api.urls",'ims_07-api'), namespace='ims_07-api')),
     path('api/ims_08/', include(("ims_08.api.urls",'ims_08-api'), namespace='ims_08-api')),
     # path('api/ims_09/', include(("ims_09.api.urls",'ims_09-api'), namespace='ims_09-api')),
-    # path('api/ims_10/', include(("ims_10.api.urls",'ims_10-api'), namespace='ims_10-api')),
+    path('api/ims_10/', include(("ims_10.api.urls",'ims_10-api'), namespace='ims_10-api')),
 ]
 
 
