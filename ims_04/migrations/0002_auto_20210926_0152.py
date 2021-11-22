@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             field=models.FileField(upload_to='complaints_register'),
         ),
         migrations.AlterField(
-            model_name='needsandexpetations',
+            model_name='NeedsAndExpetation',
             name='needs_expetations_file',
             field=models.FileField(upload_to='needs_expetations'),
         ),

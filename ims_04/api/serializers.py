@@ -6,7 +6,7 @@ from rest_framework.serializers import (
 
 from accounts.api.serializers import UserDetailSerializer
 # from medicine.api.serializers import ProductSerializer
-from ims_04.models import Organogram, ProcessFlowChart, NeedsAndExpetations, ComplaintsRegister
+from ims_04.models import Organogram, ProcessFlowChart, NeedsAndExpetation, ComplaintsRegister
 # from .serializers import PostSerializer
 from rest_framework.serializers import ModelSerializer
 # from rest_framework import serializers
@@ -136,11 +136,11 @@ class ProcessFlowChartListSerializer(ModelSerializer):
 
 
 ####### Needs and Expetations
-class NeedsAndExpetationsCreateUpdateSerializer(ModelSerializer):
+class NeedsAndExpetationCreateUpdateSerializer(ModelSerializer):
     user 		    = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete = models.CASCADE)
     needs_expetations_file = models.FileField(upload_to='needs_expetations')
     class Meta:
-        model = NeedsAndExpetations
+        model = NeedsAndExpetation
         fields = [
             'id',
             'user',
@@ -155,11 +155,11 @@ needs_detail_url = HyperlinkedIdentityField(
         lookup_field='id'#or primary key <pk>
     )
 
-class NeedsAndExpetationsDetailSerializer(ModelSerializer):
+class NeedsAndExpetationDetailSerializer(ModelSerializer):
     url = needs_detail_url
     user = UserDetailSerializer(read_only=True)
     class Meta:
-        model = NeedsAndExpetations
+        model = NeedsAndExpetation
         fields = [
             'url',
             'id',
@@ -172,7 +172,7 @@ class NeedsAndExpetationsDetailSerializer(ModelSerializer):
             'timestamp'
         ]
 
-class NeedsAndExpetationsListSerializer(ModelSerializer):
+class NeedsAndExpetationListSerializer(ModelSerializer):
     url = needs_detail_url
     user    =   UserDetailSerializer(read_only=True)
     delete_url = HyperlinkedIdentityField(
@@ -180,7 +180,7 @@ class NeedsAndExpetationsListSerializer(ModelSerializer):
         lookup_field='id'#or primary key <pk>
     )
     class Meta:
-        model = NeedsAndExpetations
+        model = NeedsAndExpetation
         fields = [
             'url',
             'user',

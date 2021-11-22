@@ -1,6 +1,6 @@
 from rest_framework.generics import ListAPIView
 
-from ims_04.models import Organogram, ProcessFlowChart, NeedsAndExpetations, ComplaintsRegister
+from ims_04.models import Organogram, ProcessFlowChart, NeedsAndExpetation, ComplaintsRegister
 # from .serializers import OrganogramSerializer
 
 from django.db.models import Q
@@ -30,9 +30,9 @@ from .serializers import (
     ProcessFlowChartDetailSerializer, 
     ProcessFlowChartCreateUpdateSerializer,
 
-    NeedsAndExpetationsListSerializer,
-    NeedsAndExpetationsDetailSerializer, 
-    NeedsAndExpetationsCreateUpdateSerializer,
+    NeedsAndExpetationListSerializer,
+    NeedsAndExpetationDetailSerializer, 
+    NeedsAndExpetationCreateUpdateSerializer,
 
     ComplaintsRegisterListSerializer,
     ComplaintsRegisterDetailSerializer, 
@@ -149,17 +149,17 @@ class ProcessFlowChartListAPIView(ListAPIView):
         return queryset
 
 
-#Creating an NeedsAndExpetations
-class NeedsAndExpetationsCreateAPIView(CreateAPIView):
-    queryset = NeedsAndExpetations.objects.all()
-    serializer_class = NeedsAndExpetationsCreateUpdateSerializer 
+#Creating an NeedsAndExpetation
+class NeedsAndExpetationCreateAPIView(CreateAPIView):
+    queryset = NeedsAndExpetation.objects.all()
+    serializer_class = NeedsAndExpetationCreateUpdateSerializer 
     # lookup_field = 'id'
     # permission_classes = [IsAuthenticated]
     permission_classes = [AllowAny]
 
-class NeedsAndExpetationsUpdateAPIView(RetrieveUpdateAPIView):
-    queryset = NeedsAndExpetations.objects.all()
-    serializer_class = NeedsAndExpetationsCreateUpdateSerializer
+class NeedsAndExpetationUpdateAPIView(RetrieveUpdateAPIView):
+    queryset = NeedsAndExpetation.objects.all()
+    serializer_class = NeedsAndExpetationCreateUpdateSerializer
     lookup_field = 'id'
     permission_classes = [AllowAny]
     # permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
@@ -168,29 +168,29 @@ class NeedsAndExpetationsUpdateAPIView(RetrieveUpdateAPIView):
     # def perform_update(self, serializer):
     #     serializer.save(user=self.request.user)
 
-class NeedsAndExpetationsDeleteAPIView(DestroyAPIView):
-    queryset = NeedsAndExpetations.objects.all()
-    serializer_class = NeedsAndExpetationsDetailSerializer
+class NeedsAndExpetationDeleteAPIView(DestroyAPIView):
+    queryset = NeedsAndExpetation.objects.all()
+    serializer_class = NeedsAndExpetationDetailSerializer
     lookup_field = 'id'
     # permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     # permission_classes = [AllowAny]
     permission_classes = [IsOwnerOrReadOnly]
 
-class NeedsAndExpetationsDetailAPIView(RetrieveAPIView):
-    queryset = NeedsAndExpetations.objects.all()
-    serializer_class = NeedsAndExpetationsDetailSerializer
+class NeedsAndExpetationDetailAPIView(RetrieveAPIView):
+    queryset = NeedsAndExpetation.objects.all()
+    serializer_class = NeedsAndExpetationDetailSerializer
     lookup_field = 'id'
     permission_classes = [AllowAny]
 
-class NeedsAndExpetationsListAPIView(ListAPIView):
-    serializer_class = NeedsAndExpetationsListSerializer
+class NeedsAndExpetationListAPIView(ListAPIView):
+    serializer_class = NeedsAndExpetationListSerializer
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['name']
     pagination_class = OrganogramPageNumberPagination
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        queryset = NeedsAndExpetations.objects.filter(active=True)
+        queryset = NeedsAndExpetation.objects.filter(active=True)
         id = self.request.query_params.get('id', None)
         if id is not None:
             queryset = queryset.filter(id=id)

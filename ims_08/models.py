@@ -50,7 +50,7 @@ class OperationalPlanningControl(models.Model):
 
 
 
-class ManagementDocuemnts(models.Model):
+class ManagementDocuemnt(models.Model):
     user 		   = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete = models.CASCADE)
     name           = models.CharField(max_length=250)
     category       = models.CharField(max_length=250, choices=MANAGEMENT_CHOICES)

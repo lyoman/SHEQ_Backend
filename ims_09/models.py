@@ -33,7 +33,7 @@ SUB_CAT_CHOICES = (
     ("Refuse Disposal Schedule", "Refuse Disposal Schedule"),
 )
 
-class ActionPlans(models.Model):
+class ActionPlan(models.Model):
     user 		   = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete = models.CASCADE)
     name           = models.CharField(max_length=250)
     department     = models.CharField(max_length=250, choices=NAME_CHOICES)
@@ -52,7 +52,7 @@ class ActionPlans(models.Model):
 
 
 
-class ManagementReviewMinutes(models.Model):
+class ManagementReviewMinute(models.Model):
     user 		   = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete = models.CASCADE)
     name           = models.CharField(max_length=250)
     department     = models.CharField(max_length=250, choices=NAME_CHOICES)

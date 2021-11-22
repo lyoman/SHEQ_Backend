@@ -2,17 +2,17 @@ from django.contrib import admin
 from django.urls import path
 
 from .views import (
-    ActionPlansListAPIView,
-    ActionPlansDeleteAPIView,
-    ActionPlansDetailAPIView,
-    ActionPlansUpdateAPIView,
-    ActionPlansCreateAPIView,
+    ActionPlanListAPIView,
+    ActionPlanDeleteAPIView,
+    ActionPlanDetailAPIView,
+    ActionPlanUpdateAPIView,
+    ActionPlanCreateAPIView,
 
-    ManagementReviewMinutesListAPIView,
-    ManagementReviewMinutesDeleteAPIView,
-    ManagementReviewMinutesDetailAPIView,
-    ManagementReviewMinutesUpdateAPIView,
-    ManagementReviewMinutesCreateAPIView,
+    ManagementReviewMinuteListAPIView,
+    ManagementReviewMinuteDeleteAPIView,
+    ManagementReviewMinuteDetailAPIView,
+    ManagementReviewMinuteUpdateAPIView,
+    ManagementReviewMinuteCreateAPIView,
 
     MonitoringMeasurementAnalysisPerformanceEvaluationListAPIView,
     MonitoringMeasurementAnalysisPerformanceEvaluationDeleteAPIView,
@@ -22,18 +22,18 @@ from .views import (
 	)
 
 urlpatterns = [
-    path('action_plans/', ActionPlansListAPIView.as_view(), name='list'),
-    path('action_plans/new/', ActionPlansCreateAPIView.as_view(), name='new'),
-    path('action_plans/<int:id>/detail/', ActionPlansDetailAPIView.as_view(), name='detail'),
-    path('action_plans/<int:id>/edit/', ActionPlansUpdateAPIView.as_view(), name='update'),
-    path('action_plans/<int:id>/delete/', ActionPlansDeleteAPIView.as_view(), name="delete"),
+    path('action_plans/', ActionPlanListAPIView.as_view(), name='list'),
+    path('action_plans/new/', ActionPlanCreateAPIView.as_view(), name='new'),
+    path('action_plans/<int:id>/detail/', ActionPlanDetailAPIView.as_view(), name='detail'),
+    path('action_plans/<int:id>/edit/', ActionPlanUpdateAPIView.as_view(), name='update'),
+    path('action_plans/<int:id>/delete/', ActionPlanDeleteAPIView.as_view(), name="delete"),
 
     ##### process flow
-    path('management_review_minutes/', ManagementReviewMinutesListAPIView.as_view(), name='process_flow'),
-    path('management_review_minutes/new/', ManagementReviewMinutesCreateAPIView.as_view(), name='new_chart'),
-    path('management_review_minutes/<int:id>/detail/', ManagementReviewMinutesDetailAPIView.as_view(), name='detail_chart'),
-    path('management_review_minutes/<int:id>/edit/', ManagementReviewMinutesUpdateAPIView.as_view(), name='update_chart'),
-    path('management_review_minutes/<int:id>/delete/', ManagementReviewMinutesDeleteAPIView.as_view(), name="delete_chart"),
+    path('management_review_minutes/', ManagementReviewMinuteListAPIView.as_view(), name='process_flow'),
+    path('management_review_minutes/new/', ManagementReviewMinuteCreateAPIView.as_view(), name='new_chart'),
+    path('management_review_minutes/<int:id>/detail/', ManagementReviewMinuteDetailAPIView.as_view(), name='detail_chart'),
+    path('management_review_minutes/<int:id>/edit/', ManagementReviewMinuteUpdateAPIView.as_view(), name='update_chart'),
+    path('management_review_minutes/<int:id>/delete/', ManagementReviewMinuteDeleteAPIView.as_view(), name="delete_chart"),
 
     ##### Needs and Expetations
     path('monitoring_measurement_analysis/', MonitoringMeasurementAnalysisPerformanceEvaluationListAPIView.as_view(), name='needs'),

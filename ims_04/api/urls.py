@@ -14,11 +14,11 @@ from .views import (
     ProcessFlowChartUpdateAPIView,
     ProcessFlowChartCreateAPIView,
 
-    NeedsAndExpetationsListAPIView,
-    NeedsAndExpetationsDeleteAPIView,
-    NeedsAndExpetationsDetailAPIView,
-    NeedsAndExpetationsUpdateAPIView,
-    NeedsAndExpetationsCreateAPIView,
+    NeedsAndExpetationListAPIView,
+    NeedsAndExpetationDeleteAPIView,
+    NeedsAndExpetationDetailAPIView,
+    NeedsAndExpetationUpdateAPIView,
+    NeedsAndExpetationCreateAPIView,
 
     ComplaintsRegisterListAPIView,
     ComplaintsRegisterDeleteAPIView,
@@ -42,11 +42,11 @@ urlpatterns = [
     path('process_flow/<int:id>/delete/', ProcessFlowChartDeleteAPIView.as_view(), name="delete_chart"),
 
     ##### Needs and Expetations
-    path('needs_expetations/', NeedsAndExpetationsListAPIView.as_view(), name='needs'),
-    path('needs_expetations/new/', NeedsAndExpetationsCreateAPIView.as_view(), name='new_needs'),
-    path('needs_expetations/<int:id>/detail/', NeedsAndExpetationsDetailAPIView.as_view(), name='detail_needs'),
-    path('needs_expetations/<int:id>/edit/', NeedsAndExpetationsUpdateAPIView.as_view(), name='update_needs'),
-    path('needs_expetations/<int:id>/delete/', NeedsAndExpetationsDeleteAPIView.as_view(), name="delete_needs"),
+    path('needs_expetations/', NeedsAndExpetationListAPIView.as_view(), name='needs'),
+    path('needs_expetations/new/', NeedsAndExpetationCreateAPIView.as_view(), name='new_needs'),
+    path('needs_expetations/<int:id>/detail/', NeedsAndExpetationDetailAPIView.as_view(), name='detail_needs'),
+    path('needs_expetations/<int:id>/edit/', NeedsAndExpetationUpdateAPIView.as_view(), name='update_needs'),
+    path('needs_expetations/<int:id>/delete/', NeedsAndExpetationDeleteAPIView.as_view(), name="delete_needs"),
 
     ##### Complaints Register
     path('complaints_register/', ComplaintsRegisterListAPIView.as_view(), name='register'),

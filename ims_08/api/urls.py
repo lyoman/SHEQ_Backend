@@ -2,11 +2,11 @@ from django.contrib import admin
 from django.urls import path
 
 from .views import (
-    ManagementDocuemntsListAPIView,
-    ManagementDocuemntsDeleteAPIView,
-    ManagementDocuemntsDetailAPIView,
-    ManagementDocuemntsUpdateAPIView,
-    ManagementDocuemntsCreateAPIView,
+    ManagementDocuemntListAPIView,
+    ManagementDocuemntDeleteAPIView,
+    ManagementDocuemntDetailAPIView,
+    ManagementDocuemntUpdateAPIView,
+    ManagementDocuemntCreateAPIView,
 
     OperationalPlanningControlListAPIView,
     OperationalPlanningControlDeleteAPIView,
@@ -17,11 +17,11 @@ from .views import (
 	)
 
 urlpatterns = [
-    path('management_documents/', ManagementDocuemntsListAPIView.as_view(), name='list'),
-    path('management_documents/new/', ManagementDocuemntsCreateAPIView.as_view(), name='new'),
-    path('management_documents/<int:id>/detail/', ManagementDocuemntsDetailAPIView.as_view(), name='detail'),
-    path('management_documents/<int:id>/edit/', ManagementDocuemntsUpdateAPIView.as_view(), name='update'),
-    path('management_documents/<int:id>/delete/', ManagementDocuemntsDeleteAPIView.as_view(), name="delete"),
+    path('management_documents/', ManagementDocuemntListAPIView.as_view(), name='list'),
+    path('management_documents/new/', ManagementDocuemntCreateAPIView.as_view(), name='new'),
+    path('management_documents/<int:id>/detail/', ManagementDocuemntDetailAPIView.as_view(), name='detail'),
+    path('management_documents/<int:id>/edit/', ManagementDocuemntUpdateAPIView.as_view(), name='update'),
+    path('management_documents/<int:id>/delete/', ManagementDocuemntDeleteAPIView.as_view(), name="delete"),
 
     ##### process flow
     path('operational_planning_control/', OperationalPlanningControlListAPIView.as_view(), name='process_flow'),

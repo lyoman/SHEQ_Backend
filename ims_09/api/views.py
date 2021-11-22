@@ -1,7 +1,7 @@
 from rest_framework.generics import ListAPIView
 
-from ims_09.models import ActionPlans, ManagementReviewMinutes, MonitoringMeasurementAnalysisPerformanceEvaluation
-# from .serializers import ActionPlansSerializer
+from ims_09.models import ActionPlan, ManagementReviewMinute, MonitoringMeasurementAnalysisPerformanceEvaluation
+# from .serializers import ActionPlanSerializer
 
 from django.db.models import Q
 
@@ -22,13 +22,13 @@ from .pagination import OrganogramLimitOffSetPagination , OrganogramPageNumberPa
 from .permissions import IsOwnerOrReadOnly
 
 from .serializers import (
-    ActionPlansListSerializer,
-    ActionPlansDetailSerializer, 
-    ActionPlansCreateUpdateSerializer,
+    ActionPlanListSerializer,
+    ActionPlanDetailSerializer, 
+    ActionPlanCreateUpdateSerializer,
 
-    ManagementReviewMinutesListSerializer,
-    ManagementReviewMinutesDetailSerializer, 
-    ManagementReviewMinutesCreateUpdateSerializer,
+    ManagementReviewMinuteListSerializer,
+    ManagementReviewMinuteDetailSerializer, 
+    ManagementReviewMinuteCreateUpdateSerializer,
 
     MonitoringMeasurementAnalysisPerformanceEvaluationListSerializer,
     MonitoringMeasurementAnalysisPerformanceEvaluationDetailSerializer, 
@@ -42,21 +42,21 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
 )
 
-# class ActionPlansListAPIView(ListAPIView):
+# class ActionPlanListAPIView(ListAPIView):
 #     queryset = store.objects.all()
 #     serializer_class = storeSerializer
 
 #Creating an Ambulance
-class ActionPlansCreateAPIView(CreateAPIView):
-    queryset = ActionPlans.objects.all()
-    serializer_class = ActionPlansCreateUpdateSerializer 
+class ActionPlanCreateAPIView(CreateAPIView):
+    queryset = ActionPlan.objects.all()
+    serializer_class = ActionPlanCreateUpdateSerializer 
     # lookup_field = 'id'
     # permission_classes = [IsAuthenticated]
     permission_classes = [AllowAny]
 
-class ActionPlansUpdateAPIView(RetrieveUpdateAPIView):
-    queryset = ActionPlans.objects.all()
-    serializer_class = ActionPlansCreateUpdateSerializer
+class ActionPlanUpdateAPIView(RetrieveUpdateAPIView):
+    queryset = ActionPlan.objects.all()
+    serializer_class = ActionPlanCreateUpdateSerializer
     lookup_field = 'id'
     permission_classes = [AllowAny]
     # permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
@@ -65,29 +65,29 @@ class ActionPlansUpdateAPIView(RetrieveUpdateAPIView):
     # def perform_update(self, serializer):
     #     serializer.save(user=self.request.user)
 
-class ActionPlansDeleteAPIView(DestroyAPIView):
-    queryset = ActionPlans.objects.all()
-    serializer_class = ActionPlansDetailSerializer
+class ActionPlanDeleteAPIView(DestroyAPIView):
+    queryset = ActionPlan.objects.all()
+    serializer_class = ActionPlanDetailSerializer
     lookup_field = 'id'
     # permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     # permission_classes = [AllowAny]
     permission_classes = [IsOwnerOrReadOnly]
 
-class ActionPlansDetailAPIView(RetrieveAPIView):
-    queryset = ActionPlans.objects.all()
-    serializer_class = ActionPlansDetailSerializer
+class ActionPlanDetailAPIView(RetrieveAPIView):
+    queryset = ActionPlan.objects.all()
+    serializer_class = ActionPlanDetailSerializer
     lookup_field = 'id'
     permission_classes = [AllowAny]
 
-class ActionPlansListAPIView(ListAPIView):
-    serializer_class = ActionPlansListSerializer
+class ActionPlanListAPIView(ListAPIView):
+    serializer_class = ActionPlanListSerializer
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['name']
     pagination_class = OrganogramPageNumberPagination
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        queryset = ActionPlans.objects.filter(active=True)
+        queryset = ActionPlan.objects.filter(active=True)
         id = self.request.query_params.get('id', None)
         if id is not None:
             queryset = queryset.filter(id=id)
@@ -96,17 +96,17 @@ class ActionPlansListAPIView(ListAPIView):
 
 
 
-#Creating an ManagementReviewMinutes
-class ManagementReviewMinutesCreateAPIView(CreateAPIView):
-    queryset = ManagementReviewMinutes.objects.all()
-    serializer_class = ManagementReviewMinutesCreateUpdateSerializer 
+#Creating an ManagementReviewMinute
+class ManagementReviewMinuteCreateAPIView(CreateAPIView):
+    queryset = ManagementReviewMinute.objects.all()
+    serializer_class = ManagementReviewMinuteCreateUpdateSerializer 
     # lookup_field = 'id'
     # permission_classes = [IsAuthenticated]
     permission_classes = [AllowAny]
 
-class ManagementReviewMinutesUpdateAPIView(RetrieveUpdateAPIView):
-    queryset = ManagementReviewMinutes.objects.all()
-    serializer_class = ManagementReviewMinutesCreateUpdateSerializer
+class ManagementReviewMinuteUpdateAPIView(RetrieveUpdateAPIView):
+    queryset = ManagementReviewMinute.objects.all()
+    serializer_class = ManagementReviewMinuteCreateUpdateSerializer
     lookup_field = 'id'
     permission_classes = [AllowAny]
     # permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
@@ -115,29 +115,29 @@ class ManagementReviewMinutesUpdateAPIView(RetrieveUpdateAPIView):
     # def perform_update(self, serializer):
     #     serializer.save(user=self.request.user)
 
-class ManagementReviewMinutesDeleteAPIView(DestroyAPIView):
-    queryset = ManagementReviewMinutes.objects.all()
-    serializer_class = ManagementReviewMinutesDetailSerializer
+class ManagementReviewMinuteDeleteAPIView(DestroyAPIView):
+    queryset = ManagementReviewMinute.objects.all()
+    serializer_class = ManagementReviewMinuteDetailSerializer
     lookup_field = 'id'
     # permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     # permission_classes = [AllowAny]
     permission_classes = [IsOwnerOrReadOnly]
 
-class ManagementReviewMinutesDetailAPIView(RetrieveAPIView):
-    queryset = ManagementReviewMinutes.objects.all()
-    serializer_class = ManagementReviewMinutesDetailSerializer
+class ManagementReviewMinuteDetailAPIView(RetrieveAPIView):
+    queryset = ManagementReviewMinute.objects.all()
+    serializer_class = ManagementReviewMinuteDetailSerializer
     lookup_field = 'id'
     permission_classes = [AllowAny]
 
-class ManagementReviewMinutesListAPIView(ListAPIView):
-    serializer_class = ManagementReviewMinutesListSerializer
+class ManagementReviewMinuteListAPIView(ListAPIView):
+    serializer_class = ManagementReviewMinuteListSerializer
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['name']
     pagination_class = OrganogramPageNumberPagination
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        queryset = ManagementReviewMinutes.objects.filter(active=True)
+        queryset = ManagementReviewMinute.objects.filter(active=True)
         id = self.request.query_params.get('id', None)
         if id is not None:
             queryset = queryset.filter(id=id)

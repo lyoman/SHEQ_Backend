@@ -6,7 +6,7 @@ from rest_framework.serializers import (
 
 from accounts.api.serializers import UserDetailSerializer
 # from medicine.api.serializers import ProductSerializer
-from ims_09.models import ActionPlans, ManagementReviewMinutes, MonitoringMeasurementAnalysisPerformanceEvaluation
+from ims_09.models import ActionPlan, ManagementReviewMinute, MonitoringMeasurementAnalysisPerformanceEvaluation
 # from .serializers import PostSerializer
 from rest_framework.serializers import ModelSerializer
 # from rest_framework import serializers
@@ -14,11 +14,11 @@ from django.db import models
 from django.conf import settings
 
 
-class ActionPlansCreateUpdateSerializer(ModelSerializer):
+class ActionPlanCreateUpdateSerializer(ModelSerializer):
     user 		    = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete = models.CASCADE)
     upload_file = models.FileField(upload_to='ims_09/action_plans')
     class Meta:
-        model = ActionPlans
+        model = ActionPlan
         fields = [
             'id',
             'user',
@@ -35,12 +35,12 @@ organogram_detail_url = HyperlinkedIdentityField(
         lookup_field='id'#or primary key <pk>
     )
 
-class ActionPlansDetailSerializer(ModelSerializer):
+class ActionPlanDetailSerializer(ModelSerializer):
     url = organogram_detail_url
     user = UserDetailSerializer(read_only=True)
 
     class Meta:
-        model = ActionPlans
+        model = ActionPlan
         fields = [
             'url',
             'id',
@@ -55,7 +55,7 @@ class ActionPlansDetailSerializer(ModelSerializer):
             'timestamp'
         ]
 
-class ActionPlansListSerializer(ModelSerializer):
+class ActionPlanListSerializer(ModelSerializer):
     url = organogram_detail_url
     user    =   UserDetailSerializer(read_only=True)
     delete_url = HyperlinkedIdentityField(
@@ -63,7 +63,7 @@ class ActionPlansListSerializer(ModelSerializer):
         lookup_field='id'#or primary key <pk>
     )
     class Meta:
-        model = ActionPlans
+        model = ActionPlan
         fields = [
             'url',
             'user',
@@ -81,11 +81,11 @@ class ActionPlansListSerializer(ModelSerializer):
 
 
 #####Process flow Charts
-class ManagementReviewMinutesCreateUpdateSerializer(ModelSerializer):
+class ManagementReviewMinuteCreateUpdateSerializer(ModelSerializer):
     user 		    = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete = models.CASCADE)
     upload_file = models.FileField(upload_to='ims_09/management_review_minutes')
     class Meta:
-        model = ManagementReviewMinutes
+        model = ManagementReviewMinute
         fields = [
             'id',
             'user',
@@ -101,12 +101,12 @@ chart_detail_url = HyperlinkedIdentityField(
         lookup_field='id'#or primary key <pk>
     )
 
-class ManagementReviewMinutesDetailSerializer(ModelSerializer):
+class ManagementReviewMinuteDetailSerializer(ModelSerializer):
     url = chart_detail_url
     user = UserDetailSerializer(read_only=True)
 
     class Meta:
-        model = ManagementReviewMinutes
+        model = ManagementReviewMinute
         fields = [
             'url',
             'id',
@@ -120,7 +120,7 @@ class ManagementReviewMinutesDetailSerializer(ModelSerializer):
             'timestamp'
         ]
 
-class ManagementReviewMinutesListSerializer(ModelSerializer):
+class ManagementReviewMinuteListSerializer(ModelSerializer):
     url = chart_detail_url
     user    =   UserDetailSerializer(read_only=True)
     delete_url = HyperlinkedIdentityField(
@@ -128,7 +128,7 @@ class ManagementReviewMinutesListSerializer(ModelSerializer):
         lookup_field='id'#or primary key <pk>
     )
     class Meta:
-        model = ManagementReviewMinutes
+        model = ManagementReviewMinute
         fields = [
             'url',
             'user',

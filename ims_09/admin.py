@@ -1,24 +1,24 @@
 from django.contrib import admin
-from . models import ActionPlans, ManagementReviewMinutes, MonitoringMeasurementAnalysisPerformanceEvaluation
+from . models import ActionPlan, ManagementReviewMinute, MonitoringMeasurementAnalysisPerformanceEvaluation
 
 # Register your models here.
-class ActionPlansModelAdmin(admin.ModelAdmin):
+class ActionPlanModelAdmin(admin.ModelAdmin):
     list_display 		= ["user","name", "category", "upload_file", "department", "active", "description", "timestamp", "updated"]
     list_display_links  = ["updated", "timestamp", "user"]
     list_editable		= ["name", "category", "active"]
     list_filter			= ["updated", "timestamp", "description"]
     search_fields		= ["name", "description"]
     class Meta:
-        model = ActionPlans
+        model = ActionPlan
 
-class ManagementReviewMinutesModelAdmin(admin.ModelAdmin):
+class ManagementReviewMinuteModelAdmin(admin.ModelAdmin):
     list_display 		= ["user","name", "upload_file", "department", "active", "description", "timestamp", "updated"]
     list_display_links  = ["updated", "timestamp", "user"]
     list_editable		= ["name", "active"]
     list_filter			= ["updated", "timestamp", "description"]
     search_fields		= ["name", "description"]
     class Meta:
-        model = ManagementReviewMinutes
+        model = ManagementReviewMinute
 
 
 class MonitoringMeasurementAnalysisPerformanceEvaluationModelAdmin(admin.ModelAdmin):
@@ -32,5 +32,5 @@ class MonitoringMeasurementAnalysisPerformanceEvaluationModelAdmin(admin.ModelAd
 
 
 admin.site.register(MonitoringMeasurementAnalysisPerformanceEvaluation, MonitoringMeasurementAnalysisPerformanceEvaluationModelAdmin)
-admin.site.register(ActionPlans, ActionPlansModelAdmin)
-admin.site.register(ManagementReviewMinutes, ManagementReviewMinutesModelAdmin)
+admin.site.register(ActionPlan, ActionPlanModelAdmin)
+admin.site.register(ManagementReviewMinute, ManagementReviewMinuteModelAdmin)
