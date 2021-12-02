@@ -1,6 +1,6 @@
 from rest_framework.generics import ListAPIView
 
-from ims_08.models import OperationalPlanningControl, ManagementDocuemnt
+from ims_08.models import OperationalPlanningControl, ManagementDocument
 # from .serializers import OrganogramSerializer
 
 from django.db.models import Q
@@ -26,9 +26,9 @@ from .serializers import (
     OperationalPlanningControlDetailSerializer, 
     OperationalPlanningControlCreateUpdateSerializer,
 
-    ManagementDocuemntListSerializer,
-    ManagementDocuemntDetailSerializer, 
-    ManagementDocuemntCreateUpdateSerializer,
+    ManagementDocumentListSerializer,
+    ManagementDocumentDetailSerializer, 
+    ManagementDocumentCreateUpdateSerializer,
     )
 
 from rest_framework.permissions import (
@@ -92,17 +92,17 @@ class OperationalPlanningControlListAPIView(ListAPIView):
 
 
 
-#Creating an ManagementDocuemnt
-class ManagementDocuemntCreateAPIView(CreateAPIView):
-    queryset = ManagementDocuemnt.objects.all()
-    serializer_class = ManagementDocuemntCreateUpdateSerializer 
+#Creating an ManagementDocument
+class ManagementDocumentCreateAPIView(CreateAPIView):
+    queryset = ManagementDocument.objects.all()
+    serializer_class = ManagementDocumentCreateUpdateSerializer 
     # lookup_field = 'id'
     # permission_classes = [IsAuthenticated]
     permission_classes = [AllowAny]
 
-class ManagementDocuemntUpdateAPIView(RetrieveUpdateAPIView):
-    queryset = ManagementDocuemnt.objects.all()
-    serializer_class = ManagementDocuemntCreateUpdateSerializer
+class ManagementDocumentUpdateAPIView(RetrieveUpdateAPIView):
+    queryset = ManagementDocument.objects.all()
+    serializer_class = ManagementDocumentCreateUpdateSerializer
     lookup_field = 'id'
     permission_classes = [AllowAny]
     # permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
@@ -111,29 +111,29 @@ class ManagementDocuemntUpdateAPIView(RetrieveUpdateAPIView):
     # def perform_update(self, serializer):
     #     serializer.save(user=self.request.user)
 
-class ManagementDocuemntDeleteAPIView(DestroyAPIView):
-    queryset = ManagementDocuemnt.objects.all()
-    serializer_class = ManagementDocuemntDetailSerializer
+class ManagementDocumentDeleteAPIView(DestroyAPIView):
+    queryset = ManagementDocument.objects.all()
+    serializer_class = ManagementDocumentDetailSerializer
     lookup_field = 'id'
     # permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     # permission_classes = [AllowAny]
     permission_classes = [IsOwnerOrReadOnly]
 
-class ManagementDocuemntDetailAPIView(RetrieveAPIView):
-    queryset = ManagementDocuemnt.objects.all()
-    serializer_class = ManagementDocuemntDetailSerializer
+class ManagementDocumentDetailAPIView(RetrieveAPIView):
+    queryset = ManagementDocument.objects.all()
+    serializer_class = ManagementDocumentDetailSerializer
     lookup_field = 'id'
     permission_classes = [AllowAny]
 
-class ManagementDocuemntListAPIView(ListAPIView):
-    serializer_class = ManagementDocuemntListSerializer
+class ManagementDocumentListAPIView(ListAPIView):
+    serializer_class = ManagementDocumentListSerializer
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['name']
     pagination_class = OrganogramPageNumberPagination
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        queryset = ManagementDocuemnt.objects.filter(active=True)
+        queryset = ManagementDocument.objects.filter(active=True)
         id = self.request.query_params.get('id', None)
         if id is not None:
             queryset = queryset.filter(id=id)

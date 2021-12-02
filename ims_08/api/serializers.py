@@ -6,7 +6,7 @@ from rest_framework.serializers import (
 
 from accounts.api.serializers import UserDetailSerializer
 # from medicine.api.serializers import ProductSerializer
-from ims_08.models import OperationalPlanningControl, ManagementDocuemnt
+from ims_08.models import OperationalPlanningControl, ManagementDocument
 # from .serializers import PostSerializer
 from rest_framework.serializers import ModelSerializer
 # from rest_framework import serializers
@@ -78,11 +78,11 @@ class OperationalPlanningControlListSerializer(ModelSerializer):
 
 
 #####Process flow Charts
-class ManagementDocuemntCreateUpdateSerializer(ModelSerializer):
+class ManagementDocumentCreateUpdateSerializer(ModelSerializer):
     user 		    = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete = models.CASCADE)
     upload_file = models.FileField(upload_to='ims08/management_documents')
     class Meta:
-        model = ManagementDocuemnt
+        model = ManagementDocument
         fields = [
             'id',
             'user',
@@ -98,12 +98,12 @@ chart_detail_url = HyperlinkedIdentityField(
         lookup_field='id'#or primary key <pk>
     )
 
-class ManagementDocuemntDetailSerializer(ModelSerializer):
+class ManagementDocumentDetailSerializer(ModelSerializer):
     url = chart_detail_url
     user = UserDetailSerializer(read_only=True)
 
     class Meta:
-        model = ManagementDocuemnt
+        model = ManagementDocument
         fields = [
             'url',
             'id',
@@ -117,7 +117,7 @@ class ManagementDocuemntDetailSerializer(ModelSerializer):
             'timestamp'
         ]
 
-class ManagementDocuemntListSerializer(ModelSerializer):
+class ManagementDocumentListSerializer(ModelSerializer):
     url = chart_detail_url
     user    =   UserDetailSerializer(read_only=True)
     delete_url = HyperlinkedIdentityField(
@@ -125,7 +125,7 @@ class ManagementDocuemntListSerializer(ModelSerializer):
         lookup_field='id'#or primary key <pk>
     )
     class Meta:
-        model = ManagementDocuemnt
+        model = ManagementDocument
         fields = [
             'url',
             'user',
