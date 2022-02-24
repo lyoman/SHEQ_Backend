@@ -1,0 +1,10 @@
+pip install django==3.2.11
+pip install openpyxl
+pip install wfastcgi
+pip install djangorestframework
+pip install djangorestframework-jwt
+pip install pillow
+pip install django-cors-headers
+pip install virtualenv==20.13.0
+pip install virtualenv-clone==0.5.7
+pip install virtualenvwrapper-win==1.2.7
